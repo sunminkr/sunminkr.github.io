@@ -8,11 +8,11 @@ background: '/img/bg-project.jpg'
 
 <article class="project-preview">
   <a href="{{ project.url | prepend: site.baseurl | replace: '//', '/' }}">
-    <h2 class="project-title">{{ post.title }}</h2>
+    <h2 class="project-title">{{ project.title }}</h2>
     {% if post.subtitle %}
-    <h3 class="project-subtitle">{{ post.subtitle }}</h3>
+    <h3 class="project-subtitle">{{ project.subtitle }}</h3>
     {% else %}
-    <h3 class="project-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
+    <h3 class="project-subtitle">{{ project.excerpt | strip_html | truncatewords: 15 }}</h3>
     {% endif %}
   </a>
   <p class="project-meta">Posted by
@@ -36,7 +36,7 @@ background: '/img/bg-project.jpg'
 
   {% if paginator.previous_page %}
   <a class="btn btn-primary float-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
-    Newer<span class="d-none d-md-inline"> Posts</span></a>
+    Newer<span class="d-none d-md-inline"> Projects</span></a>
   {% endif %}
 
   {% if paginator.next_page %}
