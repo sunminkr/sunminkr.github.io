@@ -28,9 +28,9 @@ collections:
   tags:
     output: true
     premalink: /tags/:path/
-    
+
 default:
-  - scope:
+    scope:
     path: ''
     type: tags
    values:
