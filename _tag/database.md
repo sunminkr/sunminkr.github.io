@@ -1,5 +1,5 @@
 ---
 name: database
 title: DB
-image: 
+image: /img/tags/bg_tags.jpg
 ---
