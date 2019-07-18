@@ -2,65 +2,109 @@
 layout: default
 ---
 
-<!-- Page Header -->
-{% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-  {% else %}
-  <header class="masthead">
-    {% endif %}
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>{{ site.title }}</h1>
-            {% if site.description %}
-            <span class="subheading">{{ site.description }}</span>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
 
-  <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
 
-        {{ content }}
+    <div class="col-lg-8">
 
-        <!-- Home Post List -->
-        {% for post in site.posts limit : 5 %}
+        <div class="card">
+            <h1 class="card-title">About Me</h1>
 
-        <article class="post-preview">
-          <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-            <h2 class="post-title">{{ post.title }}</h2>
-            {% if post.subtitle %}
-            <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-            {% else %}
-            <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-            {% endif %}
-          </a>
-          <p class="post-meta">Posted by
-            {% if post.author %}
-            {{ post.author }}
-            {% else %}
-            {{ site.author }}
-            {% endif %}
-            on
-            {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
-          </p>
-        </article>
-
-        <hr>
-
-        {% endfor %}
-
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="{{"/posts" | relative_url }}">View All Posts &rarr;</a>
+            <p> {{ site.author_bio }} </p>
         </div>
 
-      </div>
+
+        <div class="card">
+          <h1 class="card-title"> Education</h1>
+
+          <br />
+          <div class="row">
+              <div class="col-md-2">
+                  <img src="/assets/img/education/hufs.jpg" class="company-logo"/>
+              </div>
+              <div>
+                  <h4> <strong>Bachelor of Engineering(Exp)</strong> <br>     in Computer Electronic System Engineering</h4>
+                  <h6>Hankuk University of Foreign Studies ( August 2020 )</h6>
+                  <p> Cumulative GPA : 3.48/4.00 </p>
+
+
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/assets/img/education/mannheim.jpg" class="company-logo" />
+                </div>
+                <div class="col-md-6">
+                    <h4 class="experience-title"> <strong>Exchange Student(Exp)</strong></h4>
+                    <h6 class="experience-info">University of Mannheim <br> ( September 2019 - December 2019 )</h6>
+                    <p class="experience-desc">  </p>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="card">
+            <h1 class="card-title"> Latest Projects</h1>
+
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="/assets/img/projects/ApplicationExecution.jpg" class="project-img" />
+                </div>
+                <div class="col-md-5">
+                    <h4 class="project-title"> Mobile School Bus Application <br>(Currently in development)</h4>
+                    <p class="project-desc"> A Mobile Application for school bus users built using Java, Android Studio, Firebase and MySQL.</p>
+                    <!--a class="project-link" href="https://github.com/sunminkr/Univ/blob/master/Univ/Software_engineering/%EB%93%B1%ED%95%98%EA%B5%90%20%EC%85%94%ED%8B%80%EB%B2%84%EC%8A%A4%20%EC%96%B4%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98_%EA%B3%84%ED%9A%8D%EC%84%9C_%EC%99%84%EC%84%B1%EB%B3%B8.pptx">
+                      Project Plan</a-->
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="/assets/img/projects/evasion.jpg" class="project-img" />
+                    <!--iframe width="560" height="315" src="https://www.youtube.com/embed/OoAZvcXfY0A?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe-->
+                </div>
+                <div class="col-md-5">
+                    <h4 class="project-title"> Game "Evasion" </h4>
+                    <p class="project-desc">A 3D PC Game Application built using C#, Visual Studio and Unity.</p>
+                    <a class="project-link" href="https://github.com/sunminkr/UnityProjects/blob/master/Evasion.exe">Download</a>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-  </div>
+    <div class="col-lg-4">
+
+        <div class="card">
+
+            <h6>
+                <i class="fas fa-map-marker-alt"></i> {{ site.author_location }}</h6>
+            <h6>
+                <i class="fas fa-envelope"></i> {{ site.author_email }}</h6>
+            <h6>
+                <i class="fas fa-link"></i> {{ site.author_website_url }} </h6>
+
+        </div>
+
+        <div class="card">
+            <h1> Skills </h1>
+            <p> C/C++, Python, Java, HTML/CSS</p>
+            <p> MySQL, MongoDB, Apache Hadoop, Apache Spark</p>
+            <p> Git, Ubuntu Linux, Unity </p>
+        </div>
+
+        <div class="card">
+            <h1> Coding Activity </h1>
+
+            {%- include activity.html -%}
+
+        </div>
+
+    </div>
+    </div>

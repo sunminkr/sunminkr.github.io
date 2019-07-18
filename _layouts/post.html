@@ -1,54 +1,102 @@
----
-layout: default
+--- 
+layout: default 
 ---
 
-<!-- Page Header -->
-{% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-  {% else %}
-  <header class="masthead">
-    {% endif %}
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-            <h1>{{ page.title }}</h1>
-            {% if page.subtitle %}
-            <h2 class="subheading">{{ page.subtitle }}</h2>
-            {% endif %}
-            <span class="meta">Posted by
-              <a href="#">{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}</a>
-              on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
-              content=page.content %}
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="/">Blog</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="/categories">Categories</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+        </ol>
+    </nav>
 
-  <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
 
-        {{ content }}
+    <div class="col-lg-8">
 
-        <hr>
+        <article class="card" itemscope itemtype="http://schema.org/BlogPosting">
 
-        <div class="clearfix">
 
-          {% if page.previous.url %}
-          <a class="btn btn-primary float-left" href="{{ page.previous.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.previous.title }}">&larr; Previous<span class="d-none d-md-inline">
-              Post</span></a>
-          {% endif %}
-          {% if page.next.url %}
-          <a class="btn btn-primary float-right" href="{{ page.next.url | prepend: site.baseurl | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{ page.next.title }}">Next<span class="d-none d-md-inline">
-              Post</span> &rarr;</a>
-          {% endif %}
+            <div class="card-header">
+                <!-- <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1> -->
+                <h4 class="post-meta">{{ page.summary }}</h4>
+                <p class="post-summary">Posted by : {% if page.author %}
+                    <img src="/assets/img/{{ site.author_logo }}" class="author-profile-img">
+                    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                        <span itemprop="name">{{ page.author }}</span>
+                    </span>{% endif %} at
+                    <time datetime="{{ page.date }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+                </p>
+                <span class="disqus-comment-count" data-disqus-identifier="{{ page.url }}"></span>
+                <p>
+                    {%- include share.html -%}
+                </p>
+                <div class="post-categories">
+                    {% if post %} {% assign categories = post.categories %} {% else %} {% assign categories = page.categories %} {% endif %}
+                    Category : {% for category in categories %}
+                    <a href="{{site.baseurl}}/blog/categories/{{category|slugize}}">{{category}}</a>
+                    {% unless forloop.last %}&nbsp;{% endunless %} {% endfor %}
+                </div>
+
+
+            </div>
+
+            <div class="card-body" itemprop="articleBody">
+                <img class="card-img-top" src="/assets/img/{{ page.thumbnail }}" alt="{{ post.title }}"> {{ content }} {%- include share.html -%}
+            </div>
+
+            <div id="disqus_thread"></div>
+
+        </article>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card">
+
+            <div class="card-header">Categories </div>
+            <div class="card-body text-dark">
+                {% for tag in site.categories %} {% capture tag_name %}{{ tag | first }}{% endcapture %}
+                <div id="#{{ tag_name | slugize }}"></div>
+                <li class="tag-head">
+                    <a href="{{ site.baseurl }}/blog/categories/{{ tag_name }}">{{ tag_name }}</a>
+                </li>
+                <a name="{{ tag_name | slugize }}"></a>
+
+                {% endfor %}
+            </div>
+
 
         </div>
-
-      </div>
+        <div class="card">
+            <!-- Begin MailChimp Signup Form -->
+            {%- include newsletter.html -%}
+        </div>
     </div>
-  </div>
+    <!-- End of Sidebar -->
+
+    </div>
+
+    <script>
+        var disqus_config = function () {
+            this.page.url = "{{ site.url }}{{ page.url }}"; // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document,
+                s = d.createElement('script');
+            s.src = 'https://{{ site.disqus_shortname }}.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>

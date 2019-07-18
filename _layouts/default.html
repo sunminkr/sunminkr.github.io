@@ -1,21 +1,22 @@
 <!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
 
-<html>
-
-{% include head.html %}
+{%- include head.html -%}
 
 <body>
+    <div class="container-fluid">
 
-  {% include navbar.html %}
+        {%- include header.html -%}
 
-  {{ content }}
+        <div class="col-lg-12">
 
-  {% include footer.html %}
+            {{ content }}
 
-  {% include scripts.html %}
+        </div>
 
-  {% include google-analytics.html %}
+        {%- include footer.html -%}
 
+    </div>
 </body>
 
 </html>
