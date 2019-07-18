@@ -6,7 +6,7 @@ categories:
   - Programming
   - Unity3D
 summary: Construction of PC 3D game using Unity3D
-thumbnail: posts/evasion.jpg
+thumbnail: posts/evasion.png
 ---
 <h1 class="text-center"> Evasion </h1>
 

@@ -5,7 +5,7 @@ summary: Developed device drivers, device control application(polling-based, int
 categories:
     - Multitasking
     - Linux
-thumbnail: posts/sm5.jpg
+thumbnail: posts/sm5.png
 author: Sun Min Lee
 ---
 <h1 class="text-center"> Embedded Project using SM5 </h1>

@@ -5,7 +5,7 @@ summary: Database design project using MySQL Workbench DB Designer
 categories:
     - Database
     - MySQL
-thumbnail: posts/ermodeling1.jpg
+thumbnail: posts/ermodeling1.png
 author: Sun Min Lee
 ---
 <h3> Bank database ER Diagram </h3>

@@ -5,13 +5,13 @@ summary: Mobile School Bus ticket Application
 categories:
     - Application
     - Android
-thumbnail: posts/ApplicationExecution.jpg
+thumbnail: posts/ApplicationExecution.png
 author: Sun Min Lee
 ---
 
 <h1 class="text-center"> School Bus Mobile Application </h1>
 <hr />
-  <img src="assets/img/posts/WBS.JPG" width="100%" height="auto">
+  <img src="assets/img/posts/WBS.png" width="100%" height="auto">
 <hr />
 <h3> Happen </h3>
 <p>A group project for our junior software engineering class inspired by problem using paper tickets for school bus.
